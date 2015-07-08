@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/WnP/todolist_test/db"
+	"github.com/Chipsterjulien/todolist_test/db"
 	"github.com/gin-gonic/gin"
 )
 
