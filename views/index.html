@@ -16,9 +16,9 @@
     {{ range $message := .title }}
       <ul class="list-unstyled">
         <li>
-          <form action="submit" method="post" name="formname">
+          <form action="delete" method="post" id="del-todo-{{ $message.Id }}">
             <input type="hidden" name="id" value="{{ $message.Id }}">
-            <i class="glyphicon glyphicon-remove" onclick="document.formname.submit()">{{ $message.Title }}</i>
+            <i class="glyphicon glyphicon-remove" onclick="document.getElementById('del-todo-{{ $message.Id }}').submit()">{{ $message.Title }}</i>
           </form>
           <!--
             <a href="delete/{{ $message.Id }}">
