@@ -36,10 +36,16 @@ func postHandler(c *gin.Context) {
 }
 
 func deleteHandler(c *gin.Context) {
-	id := c.Params.ByName("id")
-	dbmap.Where("id = ?", id).Delete(db.Messages{})
+	c.Request.ParseForm()
+	id := c.Request.Form.Get("id")
 
-	c.Redirect(301, "/")
+	if id != "" {
+		dbmap.Where("id = ?", id).Delete(db.Messages{})
+	}
+	//id := c.Params.ByName("id")
+	//dbmap.Where("id = ?", id).Delete(db.Messages{})
+
+	//c.Redirect(301, "/")
 }
 
 func main() {
@@ -55,7 +61,8 @@ func main() {
 	r.GET("/", indexHandler)
 	// Déclare une route quand l'utilisateur se connecte sur /submit
 	r.POST("/submit", postHandler)
-	r.GET("/delete/:id", deleteHandler)
+	//r.GET("/delete/:id", deleteHandler)
+	r.POST("/delete", deleteHandler)
 
 	r.Run(":3000")
 }

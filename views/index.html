@@ -16,10 +16,15 @@
     {{ range $message := .title }}
       <ul class="list-unstyled">
         <li>
-          <a href="delete/{{ $message.Id }}">
+          <form action="submit" method="post" name="formname">
+            <input type="hidden" name="id" value="{{ $message.Id }}">
+            <i class="glyphicon glyphicon-remove" onclick="document.formname.submit()">{{ $message.Title }}</i>
+          </form>
+          <!--
+            <a href="delete/{{ $message.Id }}">
             <i class="glyphicon glyphicon-remove"></i>
-          </a>
-          {{ $message.Title }}
+            </a>
+          -->
         </li>
       </ul>
     {{ end }}
