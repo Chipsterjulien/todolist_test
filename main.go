@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./db"
+	"github.com/Chipsterjulien/todolist_test/db"
 	"github.com/gin-gonic/gin"
 )
 
@@ -45,7 +45,7 @@ func deleteHandler(c *gin.Context) {
 	//id := c.Params.ByName("id")
 	//dbmap.Where("id = ?", id).Delete(db.Messages{})
 
-	//c.Redirect(301, "/")
+	c.Redirect(301, "/")
 }
 
 func main() {
